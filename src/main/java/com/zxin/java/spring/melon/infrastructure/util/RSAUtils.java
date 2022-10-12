@@ -13,9 +13,13 @@ import java.util.Base64;
 public class RSAUtils {
 
     public static KeyPair generateKeyPair() {
+        return generateKeyPair(1024);
+    }
+
+    public static KeyPair generateKeyPair(int keysize) {
         try {
             KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("RSA");
-            keyPairGenerator.initialize(1024);
+            keyPairGenerator.initialize(keysize);
             KeyPair keyPair = keyPairGenerator.generateKeyPair();
             return keyPair;
         } catch (NoSuchAlgorithmException e) {
